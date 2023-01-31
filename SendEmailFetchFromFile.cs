@@ -13,10 +13,13 @@ namespace testEmail
     {
         static void Main(string[] args)
         {
+            //file paths where email ID text files are metioned 
+            //in text files write email ids in new line
             string emailRecieverFile = @"E:\Avadhoot\testEmail\testEmail\EmailIdFiles\recieverID.txt";
             string emailCcFilee = @"E:\Avadhoot\testEmail\testEmail\EmailIdFiles\ccID.txt";
             string emailBccFile = @"E:\Avadhoot\testEmail\testEmail\EmailIdFiles\bccID.txt";
-
+            
+            //adding email ids in array string
             string[] emailReciever = File.ReadAllLines(emailRecieverFile); ;
             string[] emailCC = File.ReadAllLines(emailCcFilee);
             string[] emailBCC = File.ReadAllLines(emailBccFile);
@@ -68,7 +71,7 @@ namespace testEmail
             smtp.UseDefaultCredentials = false; //important
             /*sender email id and password defined. if changes are made here for sender mail address, 
               the same should also be changed in function 'emailObj.From' defined in the code above.*/
-            smtp.Credentials = new System.Net.NetworkCredential("avadhoot.desai@breachcandyhospital.org", "Desa!a023"); //automailer@breachcandyhospital.org - mumbaicentral
+            smtp.Credentials = new System.Net.NetworkCredential("avadhoot.desai@breachcandyhospital.org", "Desa!a023"); 
             smtp.Send(emailObj);       
         }
     }
