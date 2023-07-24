@@ -1,0 +1,13 @@
+string excelFilePath = "C://Users//91115//Downloads//Wifi For Doctors & HOD.xlsx";
+List<string> mobileNumbers = new List<string>();
+
+using (var workbook = new XLWorkbook(excelFilePath))
+     {
+         IXLWorksheet worksheet = workbook.Worksheet(1); // Assuming data is on the first worksheet
+         var usedRange = worksheet.RangeUsed();
+         if (usedRange != null)
+         {
+             var mobileColumn = usedRange.Column(5); // Assuming mobile numbers are in the fifth column (column E)
+             mobileNumbers.AddRange(mobileColumn.CellsUsed().Skip(1).Select(cell => cell.Value?.ToString()).Where(cellValue => !string.IsNullOrEmpty(cellValue)));
+          }
+      }
